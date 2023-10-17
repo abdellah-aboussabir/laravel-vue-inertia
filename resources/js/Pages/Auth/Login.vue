@@ -5,7 +5,7 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import { Head, Link, useForm } from '@inertiajs/vue3';
+import {Head, Link, useForm} from '@inertiajs/vue3';
 
 defineProps<{
     canResetPassword?: boolean;
@@ -37,7 +37,7 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="email" value="Email" />
+                <InputLabel for="email" value="Email"/>
 
                 <TextInput
                     id="email"

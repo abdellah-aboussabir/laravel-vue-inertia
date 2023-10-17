@@ -3,13 +3,13 @@
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 
-test('login screen can be rendered', function () {
+it('login_screen_can_be_rendered', function () {
     $response = $this->get('/login');
 
     $response->assertStatus(200);
 });
 
-test('users can authenticate using the login screen', function () {
+it('users_can_authenticate_using_the_login_screen', function () {
     $user = User::factory()->create();
 
     $response = $this->post('/login', [
@@ -21,7 +21,7 @@ test('users can authenticate using the login screen', function () {
     $response->assertRedirect(RouteServiceProvider::HOME);
 });
 
-test('users can not authenticate with invalid password', function () {
+it('users_can_not_authenticate_with_invalid_password', function () {
     $user = User::factory()->create();
 
     $this->post('/login', [
@@ -32,7 +32,7 @@ test('users can not authenticate with invalid password', function () {
     $this->assertGuest();
 });
 
-test('users can logout', function () {
+it('users_can_logout', function () {
     $user = User::factory()->create();
 
     $response = $this->actingAs($user)->post('/logout');

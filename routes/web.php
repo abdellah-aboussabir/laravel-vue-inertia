@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -16,10 +17,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/posts', [\App\Http\Controllers\PostController::class, 'index']);
+Route::group([], function () {
+    Route::get('/posts', [PostController::class, 'index'])->name('post.list');;
+    Route::get('/post', [PostController::class, 'show'])->name('post.show');;
+    Route::get('/post/create', [PostController::class, 'create'])->name('post.create');
+    Route::get('/post/edit', [PostController::class, 'edit'])->name('post.edit');
+});
 
 
- Route::get('/', function () {
+Route::get('/', function () {
   return inertia('Welcome', [
       'canLogin' => Route::has('login'),
       'canRegister' => Route::has('register'),
